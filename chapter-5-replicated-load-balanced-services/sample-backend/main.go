@@ -48,8 +48,8 @@ func main() {
 		}
 	})
 
-	http.HandleFunc("GET /health", func(w http.ResponseWriter, r *http.Request) {
-		log.Println("GET /health request received")
+	http.HandleFunc("GET /healthz", func(w http.ResponseWriter, r *http.Request) {
+		log.Println("GET /healthz request received")
 		resp := struct {
 			Status string `json:"status"`
 		}{
