@@ -17,7 +17,7 @@ A replicated dictionary service with a replicated varnish cache layer and behind
 
 ## How-to
 
-1. To call cache service from host, the cache service `type` must be `NodePort`. Get its url: `minikube service cache-service --url`, use it to call the service.
+1. To call cache service from host, the cache service `type` must be `NodePort` or `LoadBalancer`. Get its url: `minikube service cache-service --url`, use it to call the service.
 2. To build and upload a new image to minikube: `minikube image build -t sample-backend:latest .`
 3. To create an SSL certificate and private key: `openssl req -x509 -newkey rsa:4096 -nodes -keyout server.key -out server.crt -days 365 -sha256`
 4. To create a secret in k8s cluster: `kubectl create secret tls ssl --cert=server.crt --key=server.key`
