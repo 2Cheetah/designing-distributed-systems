@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-backend
+  labels:
+    app: sample-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-backend
+  template:
+    metadata:
+      labels:
+        app: sample-backend
+    spec:
+      containers:
+        - name: sample-backend
+          image: sample-backend:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 1
+            periodSeconds: 5
